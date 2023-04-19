@@ -1,6 +1,7 @@
 package com.api.pizzariamassagiga.dtos;
 
 
+
 import jakarta.validation.constraints.NotNull;
 
 public class AdicionalRefeicaoDtos {
@@ -11,7 +12,9 @@ public class AdicionalRefeicaoDtos {
 	@NotNull
 	private int quantidade;
 	@NotNull
-	private Double valor;
+	private Double valorUnitario;
+	@NotNull
+	private Double valorTotal;
 	
 	/*Contrutor*/
 	
@@ -20,11 +23,12 @@ public class AdicionalRefeicaoDtos {
 	}
 
 
-	public AdicionalRefeicaoDtos(@NotNull String nome, @NotNull int quantidade, @NotNull Double valor) {
+	public AdicionalRefeicaoDtos(@NotNull String nome, @NotNull int quantidade, @NotNull Double valorUnitario, @NotNull Double valorTotal ) {
 		super();
 		this.nome = nome;
 		this.quantidade = quantidade;
-		this.valor = valor;
+		this.valorUnitario = valorUnitario;
+		this.valorTotal = valorTotal;
 	}
 
 	/*Métodos Acessores*/
@@ -48,13 +52,20 @@ public class AdicionalRefeicaoDtos {
 	}
 
 
-	public Double getValor() {
-		return valor;
+	public Double getValorUnitario() {
+		return valorUnitario;
 	}
-
-
-	public void setValor(Double valor) {
-		this.valor = valor;
+	
+	public void setValorUnitario(Double valorUnitario) {
+		this.valorUnitario = valorUnitario;
+	}
+	
+	public Double getValorTotal() {
+		return valorTotal;
+	}
+	
+	public void setValorTotal(Double valorTotal) {
+		this.valorTotal = valorTotal;
 	}
 	
 	
