@@ -1,5 +1,7 @@
 package com.api.pizzariamassagiga.models;
 
+import java.util.Objects;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -81,7 +83,12 @@ public class AdicionalRefeicaoModel {
 
 
 	public Double getValorTotal() {
-		return valorTotal;
+		Double soma;
+		
+		soma = getQuantidade() * getValorUnitario();
+		
+		
+		return soma;
 	}
 
 
@@ -95,6 +102,28 @@ public class AdicionalRefeicaoModel {
 		return "AdicionalRefeicaoModel [id=" + id + ", nome=" + nome + ", quantidade=" + quantidade + ", valorUnitario="
 				+ valorUnitario + ", valorTotal=" + valorTotal + "]";
 	}
+
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id, nome, quantidade, valorTotal, valorUnitario);
+	}
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		AdicionalRefeicaoModel other = (AdicionalRefeicaoModel) obj;
+		return Objects.equals(id, other.id) && Objects.equals(nome, other.nome) && quantidade == other.quantidade
+				&& Objects.equals(valorTotal, other.valorTotal) && Objects.equals(valorUnitario, other.valorUnitario);
+	}
+	
+	
 
 	
 	

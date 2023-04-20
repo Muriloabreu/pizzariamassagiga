@@ -1,5 +1,7 @@
 package com.api.pizzariamassagiga.models;
 
+import java.util.Objects;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -65,6 +67,24 @@ public class TipoRefeicaoModel {
 	}
 
 	public Double getValor() {
+		
+		
+		if (getTamanho() == 'P') {
+
+			this.valor = 20.0;
+			
+		} else if (getTamanho() == 'M') {
+
+			this.valor = 40.0;
+			
+		} else if (getTamanho() == 'G') {
+
+			this.valor = 60.0;
+		}
+
+		this.valor = 80.0;
+
+				
 		return valor;
 	}
 
@@ -96,6 +116,26 @@ public class TipoRefeicaoModel {
 	public String toString() {
 		return "TipoRefeicaoModel [id=" + id + ", nome=" + nome + ", tamanho=" + tamanho + ", valor=" + valor + "]";
 	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id, nome, tamanho, valor);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		TipoRefeicaoModel other = (TipoRefeicaoModel) obj;
+		return Objects.equals(id, other.id) && Objects.equals(nome, other.nome)
+				&& Objects.equals(tamanho, other.tamanho) && Objects.equals(valor, other.valor);
+	}
+	
+	
 
 	
 
