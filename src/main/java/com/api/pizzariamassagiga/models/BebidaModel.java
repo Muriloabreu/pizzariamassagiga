@@ -21,9 +21,9 @@ public class BebidaModel {
 	@Column(nullable = false)
 	private int quantidade;
 	@Column(nullable = false)
-	private Double valorUnitario;
+	private double valorUnitario;
 	@Column(nullable = false)
-	private Double valorTotal;
+	private double valorTotal;
 	
 	/*Construtor*/
 	
@@ -31,7 +31,7 @@ public class BebidaModel {
 		super();
 	}
 
-	public BebidaModel(Long id, String nome ,int quantidade, Double valorUnitario, Double valorTotal) {
+	public BebidaModel(Long id, String nome ,int quantidade, double valorUnitario, double valorTotal) {
 		super();
 		this.id = id;
 		this.nome = nome;
@@ -71,19 +71,19 @@ public class BebidaModel {
 		return valorUnitario;
 	}
 
-	public void setValorUnitario(Double valorUnitario) {
+	public void setValorUnitario(double valorUnitario) {
 		this.valorUnitario = valorUnitario;
 	}
 
-	public Double getValorTotal() {
+	public double getValorTotal() {
 		
 		
-		Double soma;
+		double valorTot = 0.0;
 		
-		soma = getQuantidade() * getValorUnitario();
+		valorTot = getQuantidade() * getValorUnitario();
 		
 		
-		return soma;
+		return valorTot;
 	}
 
 	public void setValorTotal(Double valorTotal) {
