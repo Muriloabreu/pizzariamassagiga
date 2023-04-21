@@ -46,11 +46,6 @@ public class RefeicaoServiceImpl implements RefeicaoService{
 		
 	}
 
-	@Override
-	public boolean existsByIdTipoRefeicao(RefeicaoModel refeicao) {
-		
-				
-		return refeicaoRepository.existsByIdTipoRefeicao(refeicao.getId());
-	}
+	
 
 }
