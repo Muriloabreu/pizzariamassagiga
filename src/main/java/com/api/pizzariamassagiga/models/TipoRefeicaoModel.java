@@ -99,15 +99,20 @@ public class TipoRefeicaoModel {
 		if (tamanho == 'P') {
 			
 			tipoFormatado = "Pequeno";
+			
 		}else if (tamanho == 'M') {
 			
 			tipoFormatado = "Medio";
+			
 		}else if (tamanho == 'G') {
 			
 			tipoFormatado = "Grande";
-		}
+			
+		}else if (tamanho == 'X'){
 		
 		tipoFormatado = "Tamanho Família";
+		
+		}
 		
 		return tipoFormatado;
 	}
