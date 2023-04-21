@@ -25,10 +25,10 @@ public class RefeicaoModel {
 	@JoinColumn(name = "tipoRefeicao_id", referencedColumnName = "id")
 	private TipoRefeicaoModel tipoRefeicao;
 	@OneToMany
-	@JoinColumn(name = "adicionalRefeicoes_id")
+	@JoinColumn(name = "refeicao_id")
 	private List<AdicionalRefeicaoModel> adicionalRefeicoes = new ArrayList<>();
 	@OneToMany
-	@JoinColumn(name = "bebida_id")
+	@JoinColumn(name = "refeicao_id")
 	private List<BebidaModel> bebidas = new ArrayList<>();
 	@OneToOne
 	@JoinColumn(name = "cliente_id", referencedColumnName = "id")
@@ -120,7 +120,7 @@ public class RefeicaoModel {
 		somaTotalRefeicao = tipoRefeicao.getValor() + getTotalAdicionalRefeicoes() + getTotalBebidas();
 		
 		
-		return valorTotal;
+		return somaTotalRefeicao;
 	}
 
 	public void setValorTotal(Double valorTotal) {
