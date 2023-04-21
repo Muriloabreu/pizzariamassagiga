@@ -38,12 +38,7 @@ public class RefeicaoController {
 	@PostMapping
 	public ResponseEntity<Object> save(@RequestBody @Valid RefeicaoDtos refeicaoDtos){
 		
-//		if (refeicaoService.existsByIdTipoRefeicao(refeicaoDtos.getTipoRefeicao().getId())) {
-//
-//			return ResponseEntity.status(HttpStatus.CONFLICT)
-//					.body("Conflict: Bebida já cadastrada!"); 
-//		}
-
+		
 		var refeicaoModel = new RefeicaoModel();
 		BeanUtils.copyProperties(refeicaoDtos, refeicaoModel);
 

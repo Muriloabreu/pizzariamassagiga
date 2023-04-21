@@ -96,7 +96,7 @@ public class BebidaController {
 		bebidaModel.setNome(bebidaDtos.getNome());
 		bebidaModel.setQuantidade(bebidaDtos.getQuantidade());
 		bebidaModel.setValorUnitario(bebidaDtos.getValorUnitario());
-		bebidaModel.setValorTotal(bebidaDtos.getValorTotal());
+		bebidaModel.setValorTotal(bebidaModel.getValorTotal());
 		
 				
 		return ResponseEntity.status(HttpStatus.OK).body(bebidaService.save(bebidaModel));
