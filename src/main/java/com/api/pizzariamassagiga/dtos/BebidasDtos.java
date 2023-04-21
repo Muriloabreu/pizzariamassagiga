@@ -12,8 +12,7 @@ public class BebidasDtos {
 	private int quantidade;
 	@NotNull
 	private Double valorUnitario;
-	@NotNull
-	private Double valorTotal;
+	
 	
 	
 	/*Construtor*/
@@ -23,12 +22,12 @@ public class BebidasDtos {
 	}
 
 
-	public BebidasDtos(@NotBlank String nome, @NotNull int quantidade, @NotNull Double valorUnitario, @NotNull Double valorTotal) {
+	public BebidasDtos(@NotBlank String nome, @NotNull int quantidade, @NotNull Double valorUnitario ) {
 		super();
 		this.nome = nome;
 		this.quantidade = quantidade;
 		this.valorUnitario = valorUnitario;
-		this.valorTotal = valorTotal;
+		
 	}
 	
 	
@@ -63,14 +62,7 @@ public class BebidasDtos {
 	}
 
 
-	public Double getValorTotal() {
-		return valorTotal;
-	}
-
-
-	public void setValorTotal(Double valorTotal) {
-		this.valorTotal = valorTotal;
-	}
+	
 	
 	
 	
