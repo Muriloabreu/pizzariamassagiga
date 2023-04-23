@@ -12,6 +12,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 
 @Entity
 @Table(name = "TB_REFEICOES")
@@ -36,7 +37,7 @@ public class RefeicaoModel {
 	@Column(nullable = false)
 	private boolean entrega;
 	@Column(nullable = false)
-	private Double valorTotal;
+	private double valorTotal;
 
 	/* Construtor*/
 	
@@ -45,7 +46,7 @@ public class RefeicaoModel {
 	}
 
 	public RefeicaoModel(Long id, TipoRefeicaoModel tipoRefeicao, List<AdicionalRefeicaoModel> adicionalRefeicoes,
-			List<BebidaModel> bebidas, ClienteModel cliente, boolean entrega, Double valorTotal) {
+			List<BebidaModel> bebidas, ClienteModel cliente, boolean entrega, double valorTotal) {
 		super();
 		this.id = id;
 		this.tipoRefeicao = tipoRefeicao;
@@ -107,10 +108,10 @@ public class RefeicaoModel {
 		this.entrega = entrega;
 	}
 
-	public Double getValorTotal() {
+	public double getValorTotal() {
 		
 		
-		Double somaTotalRefeicao = 0.0;
+		double somaTotalRefeicao = 0.0;
 		
 		if (isEntrega() == true) {
 			
@@ -123,7 +124,7 @@ public class RefeicaoModel {
 		return somaTotalRefeicao;
 	}
 
-	public void setValorTotal(Double valorTotal) {
+	public void setValorTotal(double valorTotal) {
 		
 				
 		this.valorTotal = valorTotal;
@@ -131,25 +132,26 @@ public class RefeicaoModel {
 	
 	/*  Métodos Acessores para Calcular o Valor total de todos Adicionais */
 	
-	public Double getTotalAdicionalRefeicoes() {
+	@Transient // informa que esse dados não tem no banco de dados
+	public double getTotalAdicionalRefeicoes() {
 		
 				
-		Double somaAdicional = 0.0;
+		double TotAdicional = 0.0;
 		
 		for (AdicionalRefeicaoModel adicional : adicionalRefeicoes ) {
 			
-			somaAdicional += adicional.getValorTotal();
+			TotAdicional += adicional.getValorTotal();
 		}
 		
-		return somaAdicional;
+		return TotAdicional;
 	}
 	
 /*  Métodos Acessores para Calcular o Valor total de todas Bebidas */
-	
-	public Double getTotalBebidas() {
+	@Transient // informa que esse dados não tem no banco de dados
+	public double getTotalBebidas() {
 		
 				
-		Double somaAdicional = 0.0;
+		double somaAdicional = 0.0;
 		
 		for (BebidaModel bebida : bebidas ) {
 			

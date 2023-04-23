@@ -22,7 +22,7 @@ public class TipoRefeicaoModel {
 	@Column(nullable = false)
 	private Character tamanho;
 	@Column(nullable = false)
-	private Double valor;
+	private double valor;
 	
 	/*Construtor*/
 	
@@ -30,7 +30,7 @@ public class TipoRefeicaoModel {
 		super();
 	}
 		
-	public TipoRefeicaoModel(Long id, String nome, Character tamanho, Double valor) {
+	public TipoRefeicaoModel(Long id, String nome, Character tamanho, double valor) {
 		super();
 		this.id = id;
 		this.nome = nome;
@@ -66,29 +66,11 @@ public class TipoRefeicaoModel {
 		this.tamanho = tamanho;
 	}
 
-	public Double getValor() {
-		
-		
-		if (getTamanho() == 'P') {
-
-			this.valor = 20.0;
-			
-		} else if (getTamanho() == 'M') {
-
-			this.valor = 40.0;
-			
-		} else if (getTamanho() == 'G') {
-
-			this.valor = 60.0;
-		}
-
-		this.valor = 80.0;
-
-				
+	public double getValor() {
 		return valor;
 	}
 
-	public void setValor(Double valor) {
+	public void setValor(double valor) {
 		this.valor = valor;
 	}
 	

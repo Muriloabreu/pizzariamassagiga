@@ -67,7 +67,7 @@ public class BebidaModel {
 		this.quantidade = quantidade;
 	}
 
-	public Double getValorUnitario() {
+	public double getValorUnitario() {
 		return valorUnitario;
 	}
 
@@ -86,7 +86,7 @@ public class BebidaModel {
 		return valorTot;
 	}
 
-	public void setValorTotal(Double valorTotal) {
+	public void setValorTotal(double valorTotal) {
 		this.valorTotal = valorTotal;
 	}
 

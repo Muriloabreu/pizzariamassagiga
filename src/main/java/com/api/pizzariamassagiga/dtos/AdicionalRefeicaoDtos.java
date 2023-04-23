@@ -12,9 +12,10 @@ public class AdicionalRefeicaoDtos {
 	@NotNull
 	private int quantidade;
 	@NotNull
-	private Double valorUnitario;
+	private double valorUnitario; 
 	@NotNull
-	private Double valorTotal;
+	private double valorTotal;
+	
 	
 	/*Contrutor*/
 	
@@ -23,12 +24,13 @@ public class AdicionalRefeicaoDtos {
 	}
 
 
-	public AdicionalRefeicaoDtos(@NotNull String nome, @NotNull int quantidade, @NotNull Double valorUnitario, @NotNull Double valorTotal ) {
+	public AdicionalRefeicaoDtos(@NotNull String nome, @NotNull int quantidade, @NotNull double valorUnitario, @NotNull double valorTotal ) {
 		super();
 		this.nome = nome;
 		this.quantidade = quantidade;
 		this.valorUnitario = valorUnitario;
 		this.valorTotal = valorTotal;
+		
 	}
 
 	/*Métodos Acessores*/
@@ -60,17 +62,13 @@ public class AdicionalRefeicaoDtos {
 		this.valorUnitario = valorUnitario;
 	}
 	
-	public Double getValorTotal() {
+	public double getValorTotal() {
 		return valorTotal;
 	}
 	
-	public void setValorTotal(Double valorTotal) {
+	public void setValorTotal(double valorTotal) {
 		this.valorTotal = valorTotal;
 	}
-	
-	
-	
-	
 	
 
 }

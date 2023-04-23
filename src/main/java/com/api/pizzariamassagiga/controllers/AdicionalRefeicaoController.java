@@ -95,7 +95,7 @@ public class AdicionalRefeicaoController {
 		adicionalRefeicaoModel.setNome(adicionalRefeicaoDtos.getNome());
 		adicionalRefeicaoModel.setQuantidade(adicionalRefeicaoDtos.getQuantidade());
 		adicionalRefeicaoModel.setValorUnitario(adicionalRefeicaoDtos.getValorUnitario());
-		adicionalRefeicaoModel.setValorTotal(adicionalRefeicaoDtos.getValorTotal());
+		
 		
 				
 		return ResponseEntity.status(HttpStatus.OK).body(adicionalRefeicaoService.save(adicionalRefeicaoModel));

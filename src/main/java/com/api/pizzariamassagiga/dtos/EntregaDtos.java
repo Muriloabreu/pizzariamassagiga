@@ -10,35 +10,22 @@ public class EntregaDtos {
 	private RefeicaoModel refeicaoModel; 
 	@NotBlank
 	private String cpe;
-	@NotBlank
-	private String logradouro;
-	@NotBlank
-	private String complemento;
-	@NotBlank
-	private String bairro;
-	@NotBlank
-	private String localidade;
-	@NotBlank
-	private String uf;
-		
+	
+	/* Construtor */	
 
 	public EntregaDtos() {
 		super();
 	}
-	
-	public EntregaDtos(@NotBlank RefeicaoModel refeicaoModel, @NotBlank String cpe, @NotBlank String logradouro,
-			@NotBlank String complemento, @NotBlank String bairro, @NotBlank String localidade, @NotBlank String uf) {
+
+	public EntregaDtos(@NotBlank RefeicaoModel refeicaoModel, @NotBlank String cpe) {
 		super();
 		this.refeicaoModel = refeicaoModel;
 		this.cpe = cpe;
-		this.logradouro = logradouro;
-		this.complemento = complemento;
-		this.bairro = bairro;
-		this.localidade = localidade;
-		this.uf = uf;
 	}
-
-
+	
+	 /* Métodos Acessores */
+	
+	
 	public RefeicaoModel getRefeicaoModel() {
 		return refeicaoModel;
 	}
@@ -55,45 +42,11 @@ public class EntregaDtos {
 		this.cpe = cpe;
 	}
 
-	public String getLogradouro() {
-		return logradouro;
-	}
-
-	public void setLogradouro(String logradouro) {
-		this.logradouro = logradouro;
-	}
-
-	public String getComplemento() {
-		return complemento;
-	}
-
-	public void setComplemento(String complemento) {
-		this.complemento = complemento;
-	}
-
-	public String getBairro() {
-		return bairro;
-	}
-
-	public void setBairro(String bairro) {
-		this.bairro = bairro;
-	}
-
-	public String getLocalidade() {
-		return localidade;
-	}
-
-	public void setLocalidade(String localidade) {
-		this.localidade = localidade;
-	}
-
-	public String getUf() {
-		return uf;
-	}
-
-	public void setUf(String uf) {
-		this.uf = uf;
-	}
+   
+	
+	
+	
+	
 	
 	
 	

@@ -37,7 +37,7 @@ public class EntregaController {
 
 		var entregaModel = new EntregaModel();
 		BeanUtils.copyProperties(entregaDtos, entregaModel);
-
+		System.out.println(entregaModel);
 		return ResponseEntity.status(HttpStatus.CREATED).body(entregaService.save(entregaModel));
 		
 	}
@@ -89,14 +89,7 @@ public class EntregaController {
 		var entregaModel = entregaOptional.get();
 		entregaModel.setRefeicaoModel(entregaDtos.getRefeicaoModel());
 		entregaModel.setCpe(entregaDtos.getCpe());
-		entregaModel.setLogradouro(entregaDtos.getLogradouro());
-		entregaModel.setComplemento(entregaDtos.getComplemento());
-		entregaModel.setBairro(entregaDtos.getBairro());
-		entregaModel.setLocalidade(entregaDtos.getLocalidade());
-		entregaModel.setUf(entregaDtos.getUf());
-		
-		
-		
+				
 				
 		return ResponseEntity.status(HttpStatus.OK).body(entregaService.save(entregaModel));
 	

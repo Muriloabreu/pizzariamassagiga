@@ -11,7 +11,7 @@ public class TipoRefeicaoDtos {
 	@NotNull
 	private Character tamanho;
 	@NotNull
-	private Double valor;
+	private double valor;
 	
 	/*Contrutor*/
 	
@@ -20,7 +20,7 @@ public class TipoRefeicaoDtos {
 	}
 
 
-	public TipoRefeicaoDtos(@NotNull String nome, @NotNull Character tamanho, @NotNull Double valor) {
+	public TipoRefeicaoDtos(@NotNull String nome, @NotNull Character tamanho, @NotNull double valor) {
 		super();
 		this.nome = nome;
 		this.tamanho = tamanho;
@@ -49,12 +49,12 @@ public class TipoRefeicaoDtos {
 	}
 
 
-	public Double getValor() {
+	public double getValor() {
 		return valor;
 	}
 
 
-	public void setValor(Double valor) {
+	public void setValor(double valor) {
 		this.valor = valor;
 	}
 	

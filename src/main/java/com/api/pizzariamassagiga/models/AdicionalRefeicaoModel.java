@@ -22,9 +22,9 @@ public class AdicionalRefeicaoModel {
 	@Column(nullable = false)
 	private int quantidade;
 	@Column(nullable = false)
-	private Double valorUnitario;
+	private double valorUnitario;
 	@Column(nullable = false)
-	private Double valorTotal;
+	private double valorTotal;
 	
 	/*Construtor*/
 	
@@ -33,7 +33,7 @@ public class AdicionalRefeicaoModel {
 	}
 	
 	
-	public AdicionalRefeicaoModel(Long id, String nome, int quantidade, Double valorUnitario, Double valorTotal) {
+	public AdicionalRefeicaoModel(Long id, String nome, int quantidade, double valorUnitario, double valorTotal) {
 		super();
 		this.id = id;
 		this.nome = nome;
@@ -72,27 +72,26 @@ public class AdicionalRefeicaoModel {
 	}
 
 
-	public Double getValorUnitario() {
+	public double getValorUnitario() {
 		return valorUnitario;
 	}
 
 
-	public void setValorUnitario(Double valorUnitario) {
+	public void setValorUnitario(double valorUnitario) {
 		this.valorUnitario = valorUnitario;
 	}
 
 
-	public Double getValorTotal() {
-		Double soma;
+	public double getValorTotal() {
 		
-		soma = getQuantidade() * getValorUnitario();
+		double valorTot = 0.0;		
+		valorTot = this.quantidade * this.valorUnitario;	
 		
-		
-		return soma;
+		return valorTot;
 	}
 
 
-	public void setValorTotal(Double valorTotal) {
+	public void setValorTotal(double valorTotal) {
 		this.valorTotal = valorTotal;
 	}
 
