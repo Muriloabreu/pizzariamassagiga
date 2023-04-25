@@ -43,7 +43,8 @@ public class BebidaController {
 
 		var bebidaModel = new BebidaModel();
 		BeanUtils.copyProperties(bebidaDtos, bebidaModel);
-
+		bebidaModel.setValorTotal(bebidaModel.getValorUnitario() * bebidaModel.getQuantidade());
+		
 		return ResponseEntity.status(HttpStatus.CREATED).body(bebidaService.save(bebidaModel));
 		
 	}
