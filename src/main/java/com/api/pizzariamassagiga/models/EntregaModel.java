@@ -1,5 +1,6 @@
 package com.api.pizzariamassagiga.models;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -19,17 +20,17 @@ public class EntregaModel {
 	@OneToOne
 	@JoinColumn(name = "refeicaoModel_id", referencedColumnName = "id")
 	private RefeicaoModel refeicaoModel; 
-	
-	private String cpe;
-	
+	@Column(nullable = false, length = 15)
+	private String cep;
+	@Column(nullable = false, length = 100)
 	private String logradouro;
-	
+	@Column(nullable = false, length = 200)
 	private String complemento;
-	
+	@Column(nullable = false, length = 100)
 	private String bairro;
-	
+	@Column(nullable = false, length = 100)
 	private String localidade;
-	
+	@Column(nullable = false, length = 5)
 	private String uf;
 	
 	
@@ -39,12 +40,12 @@ public class EntregaModel {
 		super();
 	}
 
-	public EntregaModel(Long id, RefeicaoModel refeicaoModel, String cpe, String logradouro, String complemento,
+	public EntregaModel(Long id, RefeicaoModel refeicaoModel, String cep, String logradouro, String complemento,
 			String bairro, String localidade, String uf) {
 		super();
 		this.id = id;
 		this.refeicaoModel = refeicaoModel;
-		this.cpe = cpe;
+		this.cep = cep;
 		this.logradouro = logradouro;
 		this.complemento = complemento;
 		this.bairro = bairro;
@@ -70,12 +71,12 @@ public class EntregaModel {
 		this.refeicaoModel = refeicaoModel;
 	}
 
-	public String getCpe() {
-		return cpe;
+	public String getCep() {
+		return cep;
 	}
 
-	public void setCpe(String cpe) {
-		this.cpe = cpe;
+	public void setCep(String cep) {
+		this.cep = cep;
 	}
 
 	public String getLogradouro() {
