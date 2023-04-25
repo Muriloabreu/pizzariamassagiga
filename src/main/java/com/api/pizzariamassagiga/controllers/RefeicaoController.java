@@ -41,7 +41,15 @@ public class RefeicaoController {
 		
 		var refeicaoModel = new RefeicaoModel();
 		BeanUtils.copyProperties(refeicaoDtos, refeicaoModel);
-
+		
+		refeicaoModel.setValorTotalBebidas(refeicaoModel.getValorTotalBebidas());
+		refeicaoModel.setValorTotalAdicional(refeicaoModel.getValorTotalAdicional());
+		if (refeicaoModel.isEntrega()) {
+			refeicaoModel.setValorTotal(10 + refeicaoModel.getTipoRefeicao().getValor() + refeicaoModel.getValorTotalAdicional() + refeicaoModel.getValorTotalBebidas());
+		}else {
+			refeicaoModel.setValorTotal(refeicaoModel.getTipoRefeicao().getValor() + refeicaoModel.getValorTotalAdicional() + refeicaoModel.getValorTotalBebidas());
+		}
+		
 		return ResponseEntity.status(HttpStatus.CREATED).body(refeicaoService.save(refeicaoModel));
 		
 	}
@@ -92,8 +100,8 @@ public class RefeicaoController {
 		
 		var refeicaoModel = refeicaoOptional.get();
 		refeicaoModel.setTipoRefeicao(refeicaoDtos.getTipoRefeicao());
-		refeicaoModel.setAdicionalRefeicoes(refeicaoDtos.getAdicionalRefeicao());
-		refeicaoModel.setBebidas(refeicaoDtos.getBebida());
+		refeicaoModel.setAdicionalRefeicoes(refeicaoDtos.getAdicionalRefeicoes());
+		refeicaoModel.setBebidas(refeicaoDtos.getBebidas());
 		refeicaoModel.setCliente(refeicaoDtos.getCliente());
 		refeicaoModel.setEntrega(refeicaoDtos.isEntrega());
 		
