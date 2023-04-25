@@ -42,6 +42,7 @@ public class AdicionalRefeicaoController {
 
 		var adicionalRefeicaoModel = new AdicionalRefeicaoModel();
 		BeanUtils.copyProperties(adicionalRefeicaoDtos, adicionalRefeicaoModel);
+		adicionalRefeicaoModel.setValorTotal(adicionalRefeicaoModel.getValorUnitario() * adicionalRefeicaoModel.getQuantidade());
 
 		return ResponseEntity.status(HttpStatus.CREATED).body(adicionalRefeicaoService.save(adicionalRefeicaoModel));
 		
