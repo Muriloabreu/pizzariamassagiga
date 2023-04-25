@@ -85,7 +85,7 @@ public class AdicionalRefeicaoModel {
 	public double getValorTotal() {
 		
 		double valorTot = 0.0;		
-		valorTot = this.quantidade * this.valorUnitario;	
+		valorTot = getQuantidade() * getValorUnitario();	
 		
 		return valorTot;
 	}
