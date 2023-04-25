@@ -11,7 +11,8 @@ public class BebidasDtos {
 	@NotNull
 	private int quantidade;
 	@NotNull
-	private Double valorUnitario;
+	private double valorUnitario;
+	
 	
 	
 	
@@ -22,11 +23,12 @@ public class BebidasDtos {
 	}
 
 
-	public BebidasDtos(@NotBlank String nome, @NotNull int quantidade, @NotNull Double valorUnitario ) {
+	public BebidasDtos(@NotBlank String nome, @NotNull int quantidade, @NotNull double valorUnitario ) {
 		super();
 		this.nome = nome;
 		this.quantidade = quantidade;
 		this.valorUnitario = valorUnitario;
+		
 		
 	}
 	
@@ -61,7 +63,7 @@ public class BebidasDtos {
 		this.valorUnitario = valorUnitario;
 	}
 
-
+	
 	
 	
 	
