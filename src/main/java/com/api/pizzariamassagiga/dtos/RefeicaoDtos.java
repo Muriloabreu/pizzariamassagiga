@@ -11,9 +11,9 @@ public class RefeicaoDtos {
 	
 	private TipoRefeicaoModel tipoRefeicao;
 	
-	private List<AdicionalRefeicaoModel> adicionalRefeicao;
+	private List<AdicionalRefeicaoModel> adicionalRefeicoes;
 	
-	private List<BebidaModel> bebida;
+	private List<BebidaModel> bebidas;
 	
 	private ClienteModel cliente;
 	
@@ -27,12 +27,12 @@ public class RefeicaoDtos {
 	}
 
 	
-	public RefeicaoDtos(TipoRefeicaoModel tipoRefeicao, List<AdicionalRefeicaoModel> adicionalRefeicao,
-			List<BebidaModel> bebida, ClienteModel cliente, boolean entrega) {
+	public RefeicaoDtos(TipoRefeicaoModel tipoRefeicao, List<AdicionalRefeicaoModel> adicionalRefeicoes,
+			List<BebidaModel> bebidas, ClienteModel cliente, boolean entrega) {
 		super();
 		this.tipoRefeicao = tipoRefeicao;
-		this.adicionalRefeicao = adicionalRefeicao;
-		this.bebida = bebida;
+		this.adicionalRefeicoes = adicionalRefeicoes;
+		this.bebidas = bebidas;
 		this.cliente = cliente;
 		this.entrega = entrega;
 	}
@@ -52,23 +52,20 @@ public class RefeicaoDtos {
 	}
 
 
-	public List<AdicionalRefeicaoModel> getAdicionalRefeicao() {
-		return adicionalRefeicao;
+	public List<AdicionalRefeicaoModel> getAdicionalRefeicoes() {
+		return adicionalRefeicoes;
 	}
-
-
-	public void setAdicionalRefeicao(List<AdicionalRefeicaoModel> adicionalRefeicao) {
-		this.adicionalRefeicao = adicionalRefeicao;
+	
+	public void setAdicionalRefeicoes(List<AdicionalRefeicaoModel> adicionalRefeicoes) {
+		this.adicionalRefeicoes = adicionalRefeicoes;
 	}
-
-
-	public List<BebidaModel> getBebida() {
-		return bebida;
+	
+	public List<BebidaModel> getBebidas() {
+		return bebidas;
 	}
-
-
-	public void setBebida(List<BebidaModel> bebida) {
-		this.bebida = bebida;
+	
+	public void setBebidas(List<BebidaModel> bebidas) {
+		this.bebidas = bebidas;
 	}
 
 
