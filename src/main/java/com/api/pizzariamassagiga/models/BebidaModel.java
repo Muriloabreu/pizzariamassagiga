@@ -37,7 +37,7 @@ public class BebidaModel {
 		this.nome = nome;
 		this.quantidade = quantidade;
 		this.valorUnitario = valorUnitario;
-		this.valorTotal = valorTotal;
+		this.valorTotal = quantidade * valorUnitario;
 	}
 
 	
@@ -87,6 +87,7 @@ public class BebidaModel {
 	}
 
 	public void setValorTotal(double valorTotal) {
+		
 		this.valorTotal = valorTotal;
 	}
 
