@@ -1,5 +1,11 @@
 package com.api.pizzariamassagiga.controllers;
 
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLConnection;
 import java.util.List;
 import java.util.Optional;
 
@@ -20,6 +26,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.api.pizzariamassagiga.dtos.EntregaDtos;
 import com.api.pizzariamassagiga.models.EntregaModel;
 import com.api.pizzariamassagiga.services.EntregaService;
+import com.google.gson.Gson;
 
 import jakarta.validation.Valid;
 
@@ -33,11 +40,39 @@ public class EntregaController {
 	
 	
 	@PostMapping
-	public ResponseEntity<Object> save(@RequestBody @Valid EntregaDtos entregaDtos){
+	public ResponseEntity<Object> save(@RequestBody @Valid EntregaDtos entregaDtos) throws Exception{
 
 		var entregaModel = new EntregaModel();
 		BeanUtils.copyProperties(entregaDtos, entregaModel);
-		System.out.println(entregaModel);
+		/* Consumindo API Pulica Externa*/
+		
+		URL url = new URL("https://viacep.com.br/ws/"+ entregaDtos.getCep() +"/json/");
+		URLConnection connection = url.openConnection();
+		InputStream is = connection.getInputStream();
+		BufferedReader br = new BufferedReader(new InputStreamReader(is, "UTF-8"));
+		
+		String cep = "";
+		StringBuilder jsonCep = new StringBuilder();
+		while((cep = br.readLine()) != null) {
+			jsonCep.append(cep);
+			
+		}
+		
+		System.out.println(jsonCep.toString());
+		
+		EntregaModel entregaAux = new Gson().fromJson(jsonCep.toString(), EntregaModel.class);
+		
+		entregaModel.setCep(entregaAux.getCep());
+		entregaModel.setLogradouro(entregaAux.getLogradouro());
+		entregaModel.setComplemento(entregaAux.getComplemento());
+		entregaModel.setBairro(entregaAux.getBairro());
+		entregaModel.setLocalidade(entregaAux.getLocalidade());
+		entregaModel.setUf(entregaAux.getUf());
+		
+		/* Consumindo API Pulica Externa*/
+		
+		
+		
 		return ResponseEntity.status(HttpStatus.CREATED).body(entregaService.save(entregaModel));
 		
 	}
@@ -88,7 +123,7 @@ public class EntregaController {
 		
 		var entregaModel = entregaOptional.get();
 		entregaModel.setRefeicaoModel(entregaDtos.getRefeicaoModel());
-		entregaModel.setCpe(entregaDtos.getCpe());
+		entregaModel.setCpe(entregaDtos.getCep());
 				
 				
 		return ResponseEntity.status(HttpStatus.OK).body(entregaService.save(entregaModel));
