@@ -3,27 +3,30 @@ package com.api.pizzariamassagiga.dtos;
 import com.api.pizzariamassagiga.models.RefeicaoModel;
 
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 public class EntregaDtos {
 	
-	@NotBlank
+	@NotNull
 	private RefeicaoModel refeicaoModel; 
-	@NotBlank
-	private String cpe;
+	//@NotBlank
+	private String cep;
 	
 	/* Construtor */	
 
 	public EntregaDtos() {
 		super();
 	}
-
-	public EntregaDtos(@NotBlank RefeicaoModel refeicaoModel, @NotBlank String cpe) {
+	
+	 public EntregaDtos(@NotNull RefeicaoModel refeicaoModel, @NotBlank String cep) {
 		super();
 		this.refeicaoModel = refeicaoModel;
-		this.cpe = cpe;
+		this.cep = cep;
 	}
-	
-	 /* Métodos Acessores */
+
+
+
+	/* Métodos Acessores */
 	
 	
 	public RefeicaoModel getRefeicaoModel() {
@@ -34,12 +37,12 @@ public class EntregaDtos {
 		this.refeicaoModel = refeicaoModel;
 	}
 
-	public String getCpe() {
-		return cpe;
+	public String getCep() {
+		return cep;
 	}
-
-	public void setCpe(String cpe) {
-		this.cpe = cpe;
+	
+	public void setCep(String cep) {
+		this.cep = cep;
 	}
 
    
