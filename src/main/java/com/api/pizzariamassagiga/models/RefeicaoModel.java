@@ -2,6 +2,7 @@ package com.api.pizzariamassagiga.models;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -12,7 +13,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
-import jakarta.persistence.Transient;
+
 
 @Entity
 @Table(name = "TB_REFEICOES")
@@ -38,6 +39,10 @@ public class RefeicaoModel {
 	private boolean entrega;
 	@Column(nullable = false)
 	private double valorTotal;
+	@Column(nullable = false)
+	private double valorTotalBebidas;
+	@Column(nullable = false)
+	private double valorTotalAdicional;
 
 	/* Construtor*/
 	
@@ -45,8 +50,11 @@ public class RefeicaoModel {
 		super();
 	}
 
+	
+	
 	public RefeicaoModel(Long id, TipoRefeicaoModel tipoRefeicao, List<AdicionalRefeicaoModel> adicionalRefeicoes,
-			List<BebidaModel> bebidas, ClienteModel cliente, boolean entrega, double valorTotal) {
+			List<BebidaModel> bebidas, ClienteModel cliente, boolean entrega, double valorTotal,
+			double valorTotalBebidas, double valorTotalAdicional) {
 		super();
 		this.id = id;
 		this.tipoRefeicao = tipoRefeicao;
@@ -55,8 +63,12 @@ public class RefeicaoModel {
 		this.cliente = cliente;
 		this.entrega = entrega;
 		this.valorTotal = valorTotal;
+		this.valorTotalBebidas = valorTotalBebidas;
+		this.valorTotalAdicional = valorTotalAdicional;
 	}
-	
+
+
+
 	/*  Métodos Acessores*/
 
 	public Long getId() {
@@ -113,14 +125,15 @@ public class RefeicaoModel {
 		
 		double somaTotalRefeicao = 0.0;
 		
-		if (isEntrega() == true) {
+		if (isEntrega()) {
 			
-			somaTotalRefeicao =+ 8.0;
+			
+			somaTotalRefeicao = 10 + tipoRefeicao.getValor() + getValorTotalAdicional() + getValorTotalBebidas();
+		}else {
+		
+		somaTotalRefeicao = tipoRefeicao.getValor() + getValorTotalAdicional() + getValorTotalBebidas();
+		
 		}
-		
-		somaTotalRefeicao = tipoRefeicao.getValor() + getTotalAdicionalRefeicoes() + getTotalBebidas();
-		
-		
 		return somaTotalRefeicao;
 	}
 
@@ -129,13 +142,25 @@ public class RefeicaoModel {
 				
 		this.valorTotal = valorTotal;
 	}
-	
-	/*  Métodos Acessores para Calcular o Valor total de todos Adicionais */
-	
-	@Transient // informa que esse dados não tem no banco de dados
-	public double getTotalAdicionalRefeicoes() {
 		
-				
+	public double getValorTotalBebidas() {
+		
+		double TotBebidas = 0.0;
+		
+		for (BebidaModel bebida : bebidas ) {
+			
+			TotBebidas += bebida.getValorTotal();
+		}
+		
+		return TotBebidas;
+	}
+
+	public void setValorTotalBebidas(double valorTotalBebidas) {
+		this.valorTotalBebidas = valorTotalBebidas;
+	}
+
+	public double getValorTotalAdicional() {
+		
 		double TotAdicional = 0.0;
 		
 		for (AdicionalRefeicaoModel adicional : adicionalRefeicoes ) {
@@ -145,20 +170,45 @@ public class RefeicaoModel {
 		
 		return TotAdicional;
 	}
-	
-/*  Métodos Acessores para Calcular o Valor total de todas Bebidas */
-	@Transient // informa que esse dados não tem no banco de dados
-	public double getTotalBebidas() {
+
+	public void setValorTotalAdicional(double valorTotalAdicional) {
+		this.valorTotalAdicional = valorTotalAdicional;
+	}
 		
-				
-		double somaAdicional = 0.0;
-		
-		for (BebidaModel bebida : bebidas ) {
-			
-			somaAdicional += bebida.getValorTotal();
-		}
-		
-		return somaAdicional;
+
+	@Override
+	public String toString() {
+		return "RefeicaoModel [id=" + id + ", tipoRefeicao=" + tipoRefeicao + ", adicionalRefeicoes="
+				+ adicionalRefeicoes + ", bebidas=" + bebidas + ", cliente=" + cliente + ", entrega=" + entrega
+				+ ", valorTotal=" + valorTotal + ", valorTotalBebidas=" + valorTotalBebidas + ", valorTotalAdicional="
+				+ valorTotalAdicional + "]";
+	}
+
+
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(adicionalRefeicoes, bebidas, cliente, entrega, id, tipoRefeicao, valorTotal,
+				valorTotalAdicional, valorTotalBebidas);
+	}
+
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		RefeicaoModel other = (RefeicaoModel) obj;
+		return Objects.equals(adicionalRefeicoes, other.adicionalRefeicoes) && Objects.equals(bebidas, other.bebidas)
+				&& Objects.equals(cliente, other.cliente) && entrega == other.entrega && Objects.equals(id, other.id)
+				&& Objects.equals(tipoRefeicao, other.tipoRefeicao)
+				&& Double.doubleToLongBits(valorTotal) == Double.doubleToLongBits(other.valorTotal)
+				&& Double.doubleToLongBits(valorTotalAdicional) == Double.doubleToLongBits(other.valorTotalAdicional)
+				&& Double.doubleToLongBits(valorTotalBebidas) == Double.doubleToLongBits(other.valorTotalBebidas);
 	}
 	
 	
