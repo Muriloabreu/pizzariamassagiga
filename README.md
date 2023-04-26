@@ -7,7 +7,7 @@
 
 Pizzaria Massa GIGA é uma API REST.
 
-A API - Java utilizando Spring boot com o proposito de realizar Vários CRUDs para serviços de uma Pizzaria.  
+ API - Java utilizando Spring boot com o proposito de realizar Vários CRUDs para serviços de uma Pizzaria.  
 
 Os CRUD são:
 - Pedidos, 
@@ -17,7 +17,7 @@ Os CRUD são:
 - Item do pedido 
 - Entrega
 
-
+#### - A API Pizzaria Massa GIGA faz uma ligação com uma API externa Pública VIACEP https://viacep.com.br/ onde no endpoint salvar uma entrega, realiza uma consulta do cep e trás todo o endereço. 
 
 # Tecnologias utilizadas
 ## Back end
